@@ -1,4 +1,4 @@
-module Collator exposing
+module Intl.Collator exposing
   ( Collator
   , fromLocale
   , fromOptions
@@ -6,7 +6,7 @@ module Collator exposing
   , Options
   , Usage(Sort, Search)
   , Sensitivity(Base, Accent, Case, Variant)
-  , CaseFirst()
+  , CaseFirst(Upper, Lower, Default)
   , resolvedOptions
   , supportedLocalesOf
   )
@@ -32,6 +32,7 @@ use.
 -}
 
 import Native.Intl.Collator
+import Intl.Locale exposing (Locale)
 
 
 {-| A Collator object, for comparing strings in a language sensitive way.
@@ -41,7 +42,7 @@ type Collator = Collator
 
 {-| Create a Collator using rules from the specified language
 -}
-fromLocale : String -> Collator
+fromLocale : Locale -> Collator
 fromLocale =
   Native.Intl.Collator.fromLocale
 
@@ -55,7 +56,7 @@ fromOptions =
 
 {-| Compare two Strings according to the sort order of the Collator.
 -}
-compare : String -> String -> Collator -> Order
+compare : Collator -> String -> String -> Order
 compare =
   Native.Intl.Collator.compare
 
@@ -63,7 +64,7 @@ compare =
 {-| An Options record, containing the possible settings for a Collator object.
 -}
 type alias Options =
-  { locale: String
+  { locale: Locale
   , usage: Usage
   , sensitivity: Sensitivity
   , ignorePunctuation: Bool
@@ -119,7 +120,7 @@ resolvedOptions =
 {-| Returns a list from the provided languages that are supported without having
 to fall back to the runtime's default language.
 -}
-supportedLocalesOf : List string -> List string
+supportedLocalesOf : List Locale -> List Locale
 supportedLocalesOf =
   Native.Intl.Collator.supportedLocalesOf
 
