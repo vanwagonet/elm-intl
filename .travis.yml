@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - '4'
+  - stable
+install:
+  - npm install -g elm@0.17 elm-test@0.17
+  - elm-package install -y
+  - pushd tests && elm-package install -y && popd
+script:
+  - elm-test
