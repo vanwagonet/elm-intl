@@ -5,22 +5,38 @@ module Intl.Locale exposing
   , en, zhCN, zhTW, fr, de, it, ja, ko
   )
 
-{-| A Locale represents a BCP-47 language tag including optional region,
+{-| A Locale represents a BCP 47 language tag including optional script, region,
 variant, and extensions.
 
 @docs Locale, fromString, toString
+
+# Predefined Locales
+
+A few locales have been pre-defined for convenience.
+
+@docs en, zhCN, zhTW, fr, de, it, ja, ko
 -}
 
 import Native.Intl.Locale
 
 
-{-| The Locale type holds a valid BCP-47 language tag.
+{-| The Locale type holds a valid BCP 47 language tag.
 -}
 type Locale =
   Locale String
 
 
 {-| Checks the string as a valid language tag, and returns a locale if it is.
+
+Unicode extensions can be added to the language tag that customize the behavior.
+Although any explicit options used in `fromOptions` will take precendence over
+the locale extensions.
+
+    -- German Phone Book sorting
+    fromString "de-u-co-phonebk"
+
+If a string is passed that is not a valid BCP 47 language tag, `Nothing` will be
+returned.
 -}
 fromString : String -> Maybe Locale
 fromString =
@@ -28,6 +44,8 @@ fromString =
 
 
 {-| Gets the string language tag from a Locale
+
+    toString Locale.zhCN == "zh-CN"
 -}
 toString : Locale -> String
 toString locale =

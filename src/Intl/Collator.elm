@@ -11,10 +11,11 @@ module Intl.Collator exposing
   , supportedLocalesOf
   )
 
-{-| A library for comparing strings in a language sensitve way. It uses the
-[Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator)
-. For environments that do not include the Internationalization APIs, you will
-need to load a [polyfill](https://github.com/andyearnshaw/Intl.js).
+{-| A library for comparing strings in a language sensitve way. This module
+binds to [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator).
+For environments that do not include the Internationalization APIs, you will
+need to load a [polyfill](https://github.com/andyearnshaw/Intl.js). Node < 4 and
+Safari < 10 are known to need the polyfill.
 
 # Create
 @docs Collator, fromLocale, fromOptions
@@ -41,6 +42,8 @@ type Collator = Collator
 
 
 {-| Create a Collator using rules from the specified language
+
+    compare (fromLocale "pt-BR") "Tudo" "Bem"
 -}
 fromLocale : Locale -> Collator
 fromLocale =
@@ -48,6 +51,19 @@ fromLocale =
 
 
 {-| Create a Collator using rules from the language and other options.
+
+    let
+      naturalCompare = fromOptions
+        { locale = Locale.en
+        , usage = Usage.Sort
+        , sensitivity = Sensitivity.Base
+        , ignorePunctuation = True
+        , numeric = True
+        , caseFirst = CaseFirst.Default
+        }
+        |> compare
+    in
+      naturalCompare "123" "25" -- GT
 -}
 fromOptions : Options -> Collator
 fromOptions =
@@ -55,6 +71,8 @@ fromOptions =
 
 
 {-| Compare two Strings according to the sort order of the Collator.
+
+    compare (fromLocale "en-US") "123" "25" -- LT
 -}
 compare : Collator -> String -> String -> Order
 compare =
@@ -84,14 +102,14 @@ type Usage
 Possible values are:
 
 * Base: Only strings that differ in base letters compare as unequal. Examples:
-  a ≠ b, a = á, a = A.
+  `a ≠ b`, `a = á`, `a = A`.
 * Accent: Only strings that differ in base letters or accents and other
-  diacritic marks compare as unequal. Examples: a ≠ b, a ≠ á, a = A.
+  diacritic marks compare as unequal. Examples: `a ≠ b`, `a ≠ á`, `a = A`.
 * Case: Only strings that differ in base letters or case compare as unequal.
-  Examples: a ≠ b, a = á, a ≠ A.
+  Examples: `a ≠ b`, `a = á`, `a ≠ A`.
 * Variant: Strings that differ in base letters, accents and other diacritic
   marks, or case compare as unequal. Other differences may also be taken into
-  consideration. Examples: a ≠ b, a ≠ á, a ≠ A.
+  consideration. Examples: `a ≠ b`, `a ≠ á`, `a ≠ A`.
 -}
 type Sensitivity
   = Base
@@ -111,6 +129,11 @@ type CaseFirst
 
 {-| Returns the locale and collation options computed when the Collator was
 created.
+
+    if (resolvedOptions collator).numeric then
+      "Sorts numbers naturally"
+    else
+      "Sorts numbers lexically"
 -}
 resolvedOptions : Collator -> Options
 resolvedOptions =
@@ -119,6 +142,15 @@ resolvedOptions =
 
 {-| Returns a list from the provided languages that are supported without having
 to fall back to the runtime's default language.
+
+    case fromString "qya" of
+      Just elvish ->
+        if isEmpty (supportedLocalesOf [ elvish ]) then
+          "I can't sort Elvish text"
+        else
+          "Tolkien is #1"
+      Nothing ->
+        "You shall not pass"
 -}
 supportedLocalesOf : List Locale -> List Locale
 supportedLocalesOf =
