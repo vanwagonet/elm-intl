@@ -11,91 +11,91 @@ import String exposing (toLower)
 all : Test
 all =
   let
-    fromStringTests = describe "fromString"
+    fromLanguageTagTests = describe "fromLanguageTag"
       [ test "empty string" <|
         \() ->
-          Expect.equal (Locale.fromString "") Nothing
+          Expect.equal (Locale.fromLanguageTag "") Nothing
       , test "invalid characters" <|
         \() ->
-          Expect.equal (Locale.fromString "$@#") Nothing
+          Expect.equal (Locale.fromLanguageTag "$@#") Nothing
       , test "en" <|
         \() ->
-          Expect.equal (Locale.fromString "en") (Just Locale.en)
+          Expect.equal (Locale.fromLanguageTag "en") (Just Locale.en)
       , test "zh-CN" <|
         \() ->
-          Expect.equal (Locale.fromString "zh-CN") (Just Locale.zhCN)
+          Expect.equal (Locale.fromLanguageTag "zh-CN") (Just Locale.zhCN)
       , test "zh-tw" <|
         \() ->
-          Expect.equal (Locale.fromString "zh-tw") (Just Locale.zhTW)
+          Expect.equal (Locale.fromLanguageTag "zh-tw") (Just Locale.zhTW)
       , test "fr" <|
         \() ->
-          Expect.equal (Locale.fromString "fr") (Just Locale.fr)
+          Expect.equal (Locale.fromLanguageTag "fr") (Just Locale.fr)
       , test "De" <|
         \() ->
-          Expect.equal (Locale.fromString "De") (Just Locale.de)
+          Expect.equal (Locale.fromLanguageTag "De") (Just Locale.de)
       , test "iT" <|
         \() ->
-          Expect.equal (Locale.fromString "iT") (Just Locale.it)
+          Expect.equal (Locale.fromLanguageTag "iT") (Just Locale.it)
       , test "ja" <|
         \() ->
-          Expect.equal (Locale.fromString "ja") (Just Locale.ja)
+          Expect.equal (Locale.fromLanguageTag "ja") (Just Locale.ja)
       , test "ko" <|
         \() ->
-          Expect.equal (Locale.fromString "ko") (Just Locale.ko)
+          Expect.equal (Locale.fromLanguageTag "ko") (Just Locale.ko)
       , test "en-US" <|
         \() ->
-          Expect.notEqual (Locale.fromString "en-US") (Just Locale.en)
+          Expect.notEqual (Locale.fromLanguageTag "en-US") (Just Locale.en)
       , test "normalizes capitalization" <|
         \() ->
           Expect.equal
-            ( Locale.fromString "ZH-hant-hk"
+            ( Locale.fromLanguageTag "ZH-hant-hk"
               |> withDefault Locale.en
-              |> Locale.toString
+              |> Locale.toLanguageTag
             )
             "zh-Hant-HK"
       , fuzz string "doesn't crash on bad inputs" <|
         \tag ->
-          case Locale.fromString tag of
+          case Locale.fromLanguageTag tag of
             Nothing -> Expect.pass
             Just _ -> Expect.pass
       ]
 
-    toStringTests = describe "toString"
+    toLanguageTagTests = describe "toLanguageTag"
       [ test "en" <|
         \() ->
-          Expect.equal (Locale.toString Locale.en) "en"
+          Expect.equal (Locale.toLanguageTag Locale.en) "en"
       , test "zh-CN" <|
         \() ->
-          Expect.equal (Locale.toString Locale.zhCN) "zh-CN"
+          Expect.equal (Locale.toLanguageTag Locale.zhCN) "zh-CN"
       , test "zh-TW" <|
         \() ->
-          Expect.equal (Locale.toString Locale.zhTW) "zh-TW"
+          Expect.equal (Locale.toLanguageTag Locale.zhTW) "zh-TW"
       , test "fr" <|
         \() ->
-          Expect.equal (Locale.toString Locale.fr) "fr"
+          Expect.equal (Locale.toLanguageTag Locale.fr) "fr"
       , test "de" <|
         \() ->
-          Expect.equal (Locale.toString Locale.de) "de"
+          Expect.equal (Locale.toLanguageTag Locale.de) "de"
       , test "it" <|
         \() ->
-          Expect.equal (Locale.toString Locale.it) "it"
+          Expect.equal (Locale.toLanguageTag Locale.it) "it"
       , test "ja" <|
         \() ->
-          Expect.equal (Locale.toString Locale.ja) "ja"
+          Expect.equal (Locale.toLanguageTag Locale.ja) "ja"
       , test "ko" <|
         \() ->
-          Expect.equal (Locale.toString Locale.ko) "ko"
+          Expect.equal (Locale.toLanguageTag Locale.ko) "ko"
       , fuzz string "doesn't crash on random locales" <|
         \tag ->
-          case Locale.fromString tag of
+          case Locale.fromLanguageTag tag of
             Nothing -> Expect.pass
             Just locale ->
               Expect.equal
-                (toLower (Locale.toString locale))
+                (toLower (Locale.toLanguageTag locale))
                 (toLower tag)
       ]
   in
     describe "Intl.Locale"
-      [ fromStringTests
-      , toStringTests
+      [ fromLanguageTagTests
+      , toLanguageTagTests
       ]

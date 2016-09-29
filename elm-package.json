@@ -7,8 +7,9 @@
         "src"
     ],
     "exposed-modules": [
-        "Intl.Locale",
-        "Intl.Collator"
+        "Intl.Collator",
+        "Intl.Currency",
+        "Intl.Locale"
     ],
     "native-modules": true,
     "dependencies": {

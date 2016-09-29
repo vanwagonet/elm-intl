@@ -7,6 +7,7 @@ module Intl.Collator exposing
   , Usage(Sort, Search)
   , Sensitivity(Base, Accent, Case, Variant)
   , CaseFirst(Upper, Lower, Default)
+  , defaults
   , resolvedOptions
   , supportedLocalesOf
   )
@@ -30,11 +31,11 @@ Not all environments will support all languages and options. These functions
 help determine what is supported, and what options a particular Collator will
 use.
 
-@docs Options, Usage, Sensitivity, CaseFirst, resolvedOptions, supportedLocalesOf
+@docs Options, Usage, Sensitivity, CaseFirst, defaults, resolvedOptions, supportedLocalesOf
 -}
 
 import Native.Intl.Collator
-import Intl.Locale exposing (Locale)
+import Intl.Locale exposing (Locale, en)
 
 
 {-| A Collator object, for comparing strings in a language sensitive way.
@@ -128,6 +129,24 @@ type CaseFirst
   | Default
 
 
+{-| Returns the default options. This is helpful if you only care to change a
+few options.
+
+    options : Options
+    options =
+      { defaults | sensitivity = Base }
+-}
+defaults : Options
+defaults =
+  { locale = en
+  , usage = Sort
+  , sensitivity = Variant
+  , ignorePunctuation = False
+  , numeric = False
+  , caseFirst = Default
+  }
+
+
 {-| Returns the locale and collation options computed when the Collator was
 created.
 
@@ -144,7 +163,7 @@ resolvedOptions =
 {-| Returns a list from the provided languages that are supported without having
 to fall back to the runtime's default language.
 
-    case fromString "qya" of
+    case fromLanguageTag "qya" of
       Just elvish ->
         if isEmpty (supportedLocalesOf [ elvish ]) then
           "I can't sort Elvish text"

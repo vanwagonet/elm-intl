@@ -1,14 +1,14 @@
 module Intl.Locale exposing
   ( Locale
-  , fromString
-  , toString
+  , fromLanguageTag
+  , toLanguageTag
   , en, zhCN, zhTW, fr, de, it, ja, ko
   )
 
 {-| A Locale represents a BCP 47 language tag including optional script, region,
 variant, and extensions.
 
-@docs Locale, fromString, toString
+@docs Locale, fromLanguageTag, toLanguageTag
 
 # Predefined Locales
 
@@ -33,22 +33,22 @@ Although any explicit options used in `fromOptions` will take precendence over
 the locale extensions.
 
     -- German Phone Book sorting
-    fromString "de-u-co-phonebk"
+    fromLanguageTag "de-u-co-phonebk"
 
 If a string is passed that is not a valid BCP 47 language tag, `Nothing` will be
 returned.
 -}
-fromString : String -> Maybe Locale
-fromString =
-  Native.Intl.Locale.fromString
+fromLanguageTag : String -> Maybe Locale
+fromLanguageTag =
+  Native.Intl.Locale.fromLanguageTag
 
 
 {-| Gets the string language tag from a Locale
 
-    toString Locale.zhCN == "zh-CN"
+    toLanguageTag Locale.zhCN == "zh-CN"
 -}
-toString : Locale -> String
-toString locale =
+toLanguageTag : Locale -> String
+toLanguageTag locale =
   case locale of
     Locale tag -> tag
 

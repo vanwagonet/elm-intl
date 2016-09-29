@@ -31,7 +31,7 @@ var _thetalecrafter$elm_intl$Native_Intl_Locale = function () {
     return parts.join('-')
   }
 
-  function fromString (tag) {
+  function fromLanguageTag (tag) {
     try {
       checker.supportedLocalesOf([ tag ]) // throws if the tag is invalid
       // use the normalized tag, (doesn't do canonicalization like ji -> yi)
@@ -44,6 +44,6 @@ var _thetalecrafter$elm_intl$Native_Intl_Locale = function () {
   }
 
   return {
-    fromString: fromString
+    fromLanguageTag: fromLanguageTag
   }
 }()

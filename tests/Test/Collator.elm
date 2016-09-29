@@ -15,7 +15,7 @@ all =
     fromLocaleTests = describe "fromLocale and compare"
       ( map
         (\locale ->
-          test (Locale.toString locale) <|
+          test (Locale.toLanguageTag locale) <|
           \() ->
             let
               compare = Collator.compare (Collator.fromLocale locale)
@@ -53,17 +53,25 @@ all =
         \() ->
           Expect.equal
             ( Collator.supportedLocalesOf
-              [ withDefault Locale.en (Locale.fromString "tlh") -- Klingon
-              , withDefault Locale.en (Locale.fromString "qya") -- Elvish
+              [ withDefault Locale.en (Locale.fromLanguageTag "tlh") -- Klingon
+              , withDefault Locale.en (Locale.fromLanguageTag "qya") -- Elvish
               ]
             )
             []
+      ]
+    defaultsTests = describe "defaults"
+      [ test "are valid options" <|
+        \() ->
+          Expect.equal
+            (Collator.resolvedOptions (Collator.fromOptions Collator.defaults))
+            Collator.defaults
       ]
   in
     describe "Intl.Collator"
       [ fromLocaleTests
       , fromOptionsTests
       , supportedLocalesOfTests
+      , defaultsTests
       ]
 
 

@@ -17,12 +17,12 @@ need the polyfill.
 First get a [Locale][Locale] to use:
 
 ```elm
-import Intl.Locale exposing (Locale, fromString, en)
+import Intl.Locale exposing (Locale, fromLanguageTag, en)
 import Maybe exposing (withDefault)
 
 appLocale : Locale
 appLocale =
-  fromString "pt-BR"
+  fromLanguageTag "pt-BR"
   |> withDefault en
 ```
 

@@ -154,8 +154,8 @@ var _thetalecrafter$elm_intl$Native_Intl_Collator = function () {
       return locale._0
     })
     var supported = Collator.supportedLocalesOf(array).map(
-    _thetalecrafter$elm_intl$Intl_Locale$Locale
-  )
+      _thetalecrafter$elm_intl$Intl_Locale$Locale
+    )
     return _elm_lang$core$Native_List.fromArray(supported)
   }
 
