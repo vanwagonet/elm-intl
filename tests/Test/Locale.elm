@@ -89,7 +89,10 @@ all =
         \tag ->
           case Locale.fromString tag of
             Nothing -> Expect.pass
-            Just _ -> Expect.pass
+            Just locale ->
+              Expect.equal
+                (toLower (Locale.toString locale))
+                (toLower tag)
       ]
   in
     describe "Intl.Locale"
