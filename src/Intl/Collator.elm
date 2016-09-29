@@ -13,9 +13,10 @@ module Intl.Collator exposing
 
 {-| A library for comparing strings in a language sensitve way. This module
 binds to [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator).
-For environments that do not include the Internationalization APIs, you will
-need to load a [polyfill](https://github.com/andyearnshaw/Intl.js). Node < 4 and
-Safari < 10 are known to need the polyfill.
+Note that the [Intl.js](https://github.com/andyearnshaw/Intl.js/) polyfill does
+*not* include `Intl.Collator`. In environments without `Intl.Collator` this
+library will fall back to `String.prototype.localeCompare`, which will not
+respect the locale and options passed in.
 
 # Create
 @docs Collator, fromLocale, fromOptions
@@ -155,4 +156,3 @@ to fall back to the runtime's default language.
 supportedLocalesOf : List Locale -> List Locale
 supportedLocalesOf =
   Native.Intl.Collator.supportedLocalesOf
-

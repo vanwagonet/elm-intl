@@ -19,8 +19,30 @@
 
 // eslint-disable-next-line
 var _thetalecrafter$elm_intl$Native_Intl_Collator = function () {
-  // this will create an early error if Intl is not supported
-  var Collator = Intl.Collator
+  // This will create an early error if Intl is not supported at all, and falls
+  // back to a shim if Collator is missing from Intl.
+  var Collator = Intl.Collator || (function () {
+    function Collator () {}
+    Collator.prototype = {
+      compare: function (string1, string2) {
+        return string1.localeCompare(string2)
+      },
+      resolvedOptions: function () {
+        return {
+          locale: 'x-shim',
+          usage: 'sort',
+          sensitivity: 'variant',
+          ignorePunctuation: false,
+          numeric: false,
+          caseFirst: 'false'
+        }
+      }
+    }
+    Collator.supportedLocalesOf = function () {
+      return [] // doesn't pretend to support any locale
+    }
+    return Collator
+  }())
 
   function usageToUnion (value) {
     switch (value) {
