@@ -4,12 +4,13 @@
 elm package install thetalecrafter/elm-intl
 ```
 
-This library contains bindings the [Intl][Intl] ECMAScript Internationalization
-API. Including `Collator`, `DateTimeFormat`, and `NumberFormat`.
+This library contains bindings to the [Intl][Intl] ECMAScript
+Internationalization API. Including `Collator`, `DateTimeFormat`, and
+`NumberFormat`.
 
 For environments that do not include the Internationalization API, you will
-need to load a [polyfill][polyfill]. Node < 4 and Safari < 10 are known to need
-the polyfill.
+need to load a [polyfill][polyfill]. Node.js < 4 and Safari < 10 are known to
+need the polyfill.
 
 ## Usage
 
@@ -61,7 +62,7 @@ formatNumber =
 ```
 
 All of the Intl objects can be configured with more detailed options using
-`fromOptions`. See the [docs][Collator] for more details.
+`fromOptions`. See the full [docs][docs] for more details.
 
 
 [Intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
@@ -70,3 +71,4 @@ All of the Intl objects can be configured with more detailed options using
 [Collator]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.Collator
 [DateTimeFormat]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.DateTimeFormat
 [NumberFormat]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.NumberFormat
+[docs]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest
