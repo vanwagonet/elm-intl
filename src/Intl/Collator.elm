@@ -57,11 +57,11 @@ fromLocale =
     let
       naturalCompare = fromOptions
         { locale = Locale.en
-        , usage = Usage.Sort
-        , sensitivity = Sensitivity.Base
+        , usage = Sort
+        , sensitivity = Base
         , ignorePunctuation = True
         , numeric = True
-        , caseFirst = CaseFirst.Default
+        , caseFirst = Default
         }
         |> compare
     in
@@ -74,7 +74,7 @@ fromOptions =
 
 {-| Compare two Strings according to the sort order of the Collator.
 
-    compare (fromLocale "en-US") "123" "25" -- LT
+    compare (fromLocale Locale.en) "123" "25" -- LT
 -}
 compare : Collator -> String -> String -> Order
 compare =

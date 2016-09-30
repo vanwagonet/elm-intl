@@ -9,6 +9,7 @@
     "exposed-modules": [
         "Intl.Collator",
         "Intl.Currency",
+        "Intl.DateTimeFormat",
         "Intl.Locale",
         "Intl.TimeZone"
     ],
