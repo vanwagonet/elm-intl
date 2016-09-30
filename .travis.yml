@@ -6,8 +6,5 @@ install:
   - npm install -g standard elm@0.17 elm-test@0.17
   - elm-package install -y
   - pushd tests && elm-package install -y && popd
-cache:
-  directories:
-    - tests/elm-stuff/build-artifacts
 script:
   - standard src/**/*.js && elm-test
