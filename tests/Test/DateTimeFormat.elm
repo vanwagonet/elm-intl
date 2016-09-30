@@ -101,38 +101,6 @@ predefinedLocales =
   , Locale.ko
   ]
 
-nameStyles : List DateTimeFormat.NameStyle
-nameStyles =
-  [ DateTimeFormat.NarrowName
-  , DateTimeFormat.ShortName
-  , DateTimeFormat.LongName
-  , DateTimeFormat.OmitName
-  ]
-
-numberStyles : List DateTimeFormat.NumberStyle
-numberStyles =
-  [ DateTimeFormat.NumericNumber
-  , DateTimeFormat.TwoDigitNumber
-  , DateTimeFormat.OmitNumber
-  ]
-
-monthStyles : List DateTimeFormat.MonthStyle
-monthStyles =
-  [ DateTimeFormat.NarrowMonth
-  , DateTimeFormat.ShortMonth
-  , DateTimeFormat.LongMonth
-  , DateTimeFormat.NumericMonth
-  , DateTimeFormat.TwoDigitMonth
-  , DateTimeFormat.OmitMonth
-  ]
-
-timeZoneStyles : List DateTimeFormat.TimeZoneStyle
-timeZoneStyles =
-  [ DateTimeFormat.ShortTimeZone
-  , DateTimeFormat.LongTimeZone
-  , DateTimeFormat.OmitTimeZone
-  ]
-
 {- A couple commons configurations
 -}
 optionCombinations : List DateTimeFormat.Options

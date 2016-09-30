@@ -11,6 +11,7 @@
         "Intl.Currency",
         "Intl.DateTimeFormat",
         "Intl.Locale",
+        "Intl.NumberFormat",
         "Intl.TimeZone"
     ],
     "native-modules": true,

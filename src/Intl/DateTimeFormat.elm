@@ -4,9 +4,9 @@ module Intl.DateTimeFormat exposing
   , fromOptions
   , format
   , Options
-  , MonthStyle(NarrowMonth, ShortMonth, LongMonth, NumericMonth, TwoDigitMonth, OmitMonth)
   , NameStyle(NarrowName, ShortName, LongName, OmitName)
   , NumberStyle(NumericNumber, TwoDigitNumber, OmitNumber)
+  , MonthStyle(NarrowMonth, ShortMonth, LongMonth, NumericMonth, TwoDigitMonth, OmitMonth)
   , TimeZoneStyle(ShortTimeZone, LongTimeZone, OmitTimeZone)
   , defaults
   , resolvedOptions
@@ -28,7 +28,7 @@ Not all environments will support all languages and options. These functions
 help determine what is supported, and what options a particular DateTimeFormat will
 use.
 
-@docs Options, Style, defaults, resolvedOptions, supportedLocalesOf
+@docs Options, NameStyle, NumberStyle, MonthStyle, TimeZoneStyle, defaults, resolvedOptions, supportedLocalesOf
 -}
 
 import Native.Intl.DateTimeFormat
@@ -38,7 +38,7 @@ import Maybe exposing (Maybe)
 import Date exposing (Date)
 
 
-{-| A DateTimeFormat object, for comparing strings in a language sensitive way.
+{-| A DateTimeFormat object, for formatting dates in a language sensitive way.
 -}
 type DateTimeFormat = DateTimeFormat
 
@@ -59,8 +59,8 @@ fromLocale =
       formatTime = fromOptions
         { defaults |
         , locale = Locale.de
-        , hour = Numeric
-        , minute = TwoDigit
+        , hour = NumericNumber
+        , minute = TwoDigitNumber
         }
         |> format
     in
