@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '4'
+  - lts/*
   - stable
 install:
   - npm install -g standard elm@0.17 elm-test@0.17
