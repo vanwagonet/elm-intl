@@ -9,7 +9,8 @@
     "exposed-modules": [
         "Intl.Collator",
         "Intl.Currency",
-        "Intl.Locale"
+        "Intl.Locale",
+        "Intl.TimeZone"
     ],
     "native-modules": true,
     "dependencies": {

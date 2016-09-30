@@ -1,9 +1,9 @@
-// import Native.List //
+// import Native.Intl.Locale //
 // import Intl.Locale //
 
 /* global
   F3
-  _elm_lang$core$Native_List
+  _thetalecrafter$elm_intl$Native_Intl_Locale
   _thetalecrafter$elm_intl$Intl_Locale$Locale
   _thetalecrafter$elm_intl$Intl_Collator$Search
   _thetalecrafter$elm_intl$Intl_Collator$Sort
@@ -150,13 +150,8 @@ var _thetalecrafter$elm_intl$Native_Intl_Collator = function () {
   }
 
   function supportedLocalesOf (list) {
-    var array = _elm_lang$core$Native_List.toArray(list).map(function (locale) {
-      return locale._0
-    })
-    var supported = Collator.supportedLocalesOf(array).map(
-      _thetalecrafter$elm_intl$Intl_Locale$Locale
-    )
-    return _elm_lang$core$Native_List.fromArray(supported)
+    return _thetalecrafter$elm_intl$Native_Intl_Locale
+      .supportedLocalesOf(Collator, list)
   }
 
   return {

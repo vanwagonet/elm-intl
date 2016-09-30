@@ -1,9 +1,11 @@
+// import Native.List //
 // import Maybe //
 
 /* global
   _elm_lang$core$Maybe$Just
-  _thetalecrafter$elm_intl$Intl_Locale$Locale
   _elm_lang$core$Maybe$Nothing
+  _elm_lang$core$Native_List
+  _thetalecrafter$elm_intl$Intl_Locale$Locale
 */
 /* eslint-disable camelcase */
 
@@ -43,7 +45,18 @@ var _thetalecrafter$elm_intl$Native_Intl_Locale = function () {
     }
   }
 
+  function supportedLocalesOf (object, list) {
+    var array = _elm_lang$core$Native_List.toArray(list).map(function (locale) {
+      return locale._0
+    })
+    var supported = object.supportedLocalesOf(array).map(
+      _thetalecrafter$elm_intl$Intl_Locale$Locale
+    )
+    return _elm_lang$core$Native_List.fromArray(supported)
+  }
+
   return {
-    fromLanguageTag: fromLanguageTag
+    fromLanguageTag: fromLanguageTag,
+    supportedLocalesOf: supportedLocalesOf
   }
 }()
