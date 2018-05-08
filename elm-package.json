@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Bindings to JavaScript Internationalization API",
-    "repository": "https://github.com/thetalecrafter/elm-intl.git",
+    "repository": "https://github.com/vanwagonet/elm-intl.git",
     "license": "BSD3",
     "source-directories": [
         "src"
