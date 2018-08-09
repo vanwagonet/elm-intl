@@ -3,7 +3,7 @@ node_js:
   - lts/*
   - stable
 install:
-  - npm install -g standard elm@0.17 elm-test@0.17
+  - npm install -g standard elm@0.18 elm-test@0.18
   - elm-package install -y
   - pushd tests && elm-package install -y && popd
 script:
