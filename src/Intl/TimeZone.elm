@@ -1,9 +1,10 @@
-module Intl.TimeZone exposing
-  ( TimeZone
-  , fromIANATimeZoneName
-  , toIANATimeZoneName
-  , utc
-  )
+module Intl.TimeZone
+    exposing
+        ( TimeZone
+        , fromIANATimeZoneName
+        , toIANATimeZoneName
+        , utc
+        )
 
 {-| A TimeZone represents a time zone from the IANA database.
 
@@ -22,8 +23,8 @@ import Native.Intl.TimeZone
 
 {-| The TimeZone type holds a valid IANA time zone.
 -}
-type TimeZone =
-  TimeZone String
+type TimeZone
+    = TimeZone String
 
 
 {-| Checks the string as a valid time zone, and returns a TimeZone if it is.
@@ -36,7 +37,7 @@ The string is matched in a case-insensitive manner.
 -}
 fromIANATimeZoneName : String -> Maybe TimeZone
 fromIANATimeZoneName =
-  Native.Intl.TimeZone.fromIANATimeZoneName
+    Native.Intl.TimeZone.fromIANATimeZoneName
 
 
 {-| Gets the canonicalized string time zone name from a TimeZone.
@@ -45,11 +46,13 @@ fromIANATimeZoneName =
 -}
 toIANATimeZoneName : TimeZone -> String
 toIANATimeZoneName timeZone =
-  case timeZone of
-    TimeZone name -> name
+    case timeZone of
+        TimeZone name ->
+            name
 
 
-{-| Coordinated Universal Time -}
+{-| Coordinated Universal Time
+-}
 utc : TimeZone
 utc =
-  TimeZone "UTC"
+    TimeZone "UTC"

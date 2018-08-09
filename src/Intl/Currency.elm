@@ -1,9 +1,15 @@
-module Intl.Currency exposing
-  ( Currency
-  , fromCurrencyCode
-  , toCurrencyCode
-  , usd, eur, jpy, gbp, chf, cad
-  )
+module Intl.Currency
+    exposing
+        ( Currency
+        , fromCurrencyCode
+        , toCurrencyCode
+        , usd
+        , eur
+        , jpy
+        , gbp
+        , chf
+        , cad
+        )
 
 {-| A Currency is used to the display numeric data as money. Note that
 `NumberFormat` does *not* do exchange currency conversion, it only uses the
@@ -25,8 +31,8 @@ import String exposing (toUpper)
 
 {-| The Currency type holds a valid ISO 4217 currency code.
 -}
-type Currency =
-  Currency String
+type Currency
+    = Currency String
 
 
 {-| Checks the string as a valid currency code, and returns a currency if it is.
@@ -43,10 +49,10 @@ the code you provided.
 -}
 fromCurrencyCode : String -> Maybe Currency
 fromCurrencyCode code =
-  if contains (regex "^[A-Za-z]{3}$") code then
-    Just (Currency (toUpper code))
-  else
-    Nothing
+    if contains (regex "^[A-Za-z]{3}$") code then
+        Just (Currency (toUpper code))
+    else
+        Nothing
 
 
 {-| Gets the string currency code from a Currency
@@ -55,36 +61,48 @@ fromCurrencyCode code =
 -}
 toCurrencyCode : Currency -> String
 toCurrencyCode currency =
-  case currency of
-    Currency tag -> tag
+    case currency of
+        Currency tag ->
+            tag
 
 
-{-| United States Dollar -}
+{-| United States Dollar
+-}
 usd : Currency
 usd =
-  Currency "USD"
+    Currency "USD"
 
-{-| Euro -}
+
+{-| Euro
+-}
 eur : Currency
 eur =
-  Currency "EUR"
+    Currency "EUR"
 
-{-| Japanese Yen -}
+
+{-| Japanese Yen
+-}
 jpy : Currency
 jpy =
-  Currency "JPY"
+    Currency "JPY"
 
-{-| Pound Sterling -}
+
+{-| Pound Sterling
+-}
 gbp : Currency
 gbp =
-  Currency "GBP"
+    Currency "GBP"
 
-{-| Swiss Franc -}
+
+{-| Swiss Franc
+-}
 chf : Currency
 chf =
-  Currency "CHF"
+    Currency "CHF"
 
-{-| Canadian Dollar -}
+
+{-| Canadian Dollar
+-}
 cad : Currency
 cad =
-  Currency "CAD"
+    Currency "CAD"

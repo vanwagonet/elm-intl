@@ -1,16 +1,17 @@
-module Intl.Collator exposing
-  ( Collator
-  , fromLocale
-  , fromOptions
-  , compare
-  , Options
-  , Usage(Sort, Search)
-  , Sensitivity(Base, Accent, Case, Variant)
-  , CaseFirst(Upper, Lower, Default)
-  , defaults
-  , resolvedOptions
-  , supportedLocalesOf
-  )
+module Intl.Collator
+    exposing
+        ( Collator
+        , fromLocale
+        , fromOptions
+        , compare
+        , Options
+        , Usage(Sort, Search)
+        , Sensitivity(Base, Accent, Case, Variant)
+        , CaseFirst(Upper, Lower, Default)
+        , defaults
+        , resolvedOptions
+        , supportedLocalesOf
+        )
 
 {-| A library for comparing strings in a language sensitve way. This module
 binds to [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator).
@@ -40,7 +41,8 @@ import Intl.Locale exposing (Locale, en)
 
 {-| A Collator object, for comparing strings in a language sensitive way.
 -}
-type Collator = Collator
+type Collator
+    = Collator
 
 
 {-| Create a Collator using rules from the specified language
@@ -49,7 +51,7 @@ type Collator = Collator
 -}
 fromLocale : Locale -> Collator
 fromLocale =
-  Native.Intl.Collator.fromLocale
+    Native.Intl.Collator.fromLocale
 
 
 {-| Create a Collator using rules from the language and other options.
@@ -69,7 +71,7 @@ fromLocale =
 -}
 fromOptions : Options -> Collator
 fromOptions =
-  Native.Intl.Collator.fromOptions
+    Native.Intl.Collator.fromOptions
 
 
 {-| Compare two Strings according to the sort order of the Collator.
@@ -78,26 +80,26 @@ fromOptions =
 -}
 compare : Collator -> String -> String -> Order
 compare =
-  Native.Intl.Collator.compare
+    Native.Intl.Collator.compare
 
 
 {-| An Options record, containing the possible settings for a Collator object.
 -}
 type alias Options =
-  { locale: Locale
-  , usage: Usage
-  , sensitivity: Sensitivity
-  , ignorePunctuation: Bool
-  , numeric: Bool
-  , caseFirst: CaseFirst
-  }
+    { locale : Locale
+    , usage : Usage
+    , sensitivity : Sensitivity
+    , ignorePunctuation : Bool
+    , numeric : Bool
+    , caseFirst : CaseFirst
+    }
 
 
 {-| Whether the comparison is for sorting or for searching for matching strings.
 -}
 type Usage
-  = Sort
-  | Search
+    = Sort
+    | Search
 
 
 {-| Which differences in the strings should lead to non-zero result values.
@@ -114,19 +116,19 @@ Possible values are:
   consideration. Examples: `a ≠ b`, `a ≠ á`, `a ≠ A`.
 -}
 type Sensitivity
-  = Base
-  | Accent
-  | Case
-  | Variant
+    = Base
+    | Accent
+    | Case
+    | Variant
 
 
 {-| Whether upper case or lower case should sort first, or use the default order
 for the language.
 -}
 type CaseFirst
-  = Upper
-  | Lower
-  | Default
+    = Upper
+    | Lower
+    | Default
 
 
 {-| Returns the default options. This is helpful if you only care to change a
@@ -138,13 +140,13 @@ few options.
 -}
 defaults : Options
 defaults =
-  { locale = en
-  , usage = Sort
-  , sensitivity = Variant
-  , ignorePunctuation = False
-  , numeric = False
-  , caseFirst = Default
-  }
+    { locale = en
+    , usage = Sort
+    , sensitivity = Variant
+    , ignorePunctuation = False
+    , numeric = False
+    , caseFirst = Default
+    }
 
 
 {-| Returns the locale and collation options computed when the Collator was
@@ -157,7 +159,7 @@ created.
 -}
 resolvedOptions : Collator -> Options
 resolvedOptions =
-  Native.Intl.Collator.resolvedOptions
+    Native.Intl.Collator.resolvedOptions
 
 
 {-| Returns a list from the provided languages that are supported without having
@@ -174,4 +176,4 @@ to fall back to the runtime's default language.
 -}
 supportedLocalesOf : List Locale -> List Locale
 supportedLocalesOf =
-  Native.Intl.Collator.supportedLocalesOf
+    Native.Intl.Collator.supportedLocalesOf
