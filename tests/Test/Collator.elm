@@ -33,7 +33,7 @@ all =
             describe "fromOptions and resolvedOptions"
                 (map
                     (\options ->
-                        test "options" <|
+                        test ("options " ++ toString options) <|
                             \() ->
                                 let
                                     resolved =
