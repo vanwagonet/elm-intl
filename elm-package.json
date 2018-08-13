@@ -12,6 +12,7 @@
         "Intl.DateTimeFormat",
         "Intl.Locale",
         "Intl.NumberFormat",
+        "Intl.PluralRules",
         "Intl.TimeZone"
     ],
     "native-modules": true,
