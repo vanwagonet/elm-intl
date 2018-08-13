@@ -1,9 +1,17 @@
-module Intl.Locale exposing
-  ( Locale
-  , fromLanguageTag
-  , toLanguageTag
-  , en, zhCN, zhTW, fr, de, it, ja, ko
-  )
+module Intl.Locale
+    exposing
+        ( Locale
+        , fromLanguageTag
+        , toLanguageTag
+        , en
+        , zhCN
+        , zhTW
+        , fr
+        , de
+        , it
+        , ja
+        , ko
+        )
 
 {-| A Locale represents a BCP 47 language tag including optional script, region,
 variant, and extensions.
@@ -22,8 +30,8 @@ import Native.Intl.Locale
 
 {-| The Locale type holds a valid BCP 47 language tag.
 -}
-type Locale =
-  Locale String
+type Locale
+    = Locale String
 
 
 {-| Checks the string as a valid language tag, and returns a locale if it is.
@@ -40,7 +48,7 @@ returned.
 -}
 fromLanguageTag : String -> Maybe Locale
 fromLanguageTag =
-  Native.Intl.Locale.fromLanguageTag
+    Native.Intl.Locale.fromLanguageTag
 
 
 {-| Gets the string language tag from a Locale
@@ -49,46 +57,62 @@ fromLanguageTag =
 -}
 toLanguageTag : Locale -> String
 toLanguageTag locale =
-  case locale of
-    Locale tag -> tag
+    case locale of
+        Locale tag ->
+            tag
 
 
-{-| English -}
+{-| English
+-}
 en : Locale
 en =
-  Locale "en"
+    Locale "en"
 
-{-| Simplified Chinese -}
+
+{-| Simplified Chinese
+-}
 zhCN : Locale
 zhCN =
-  Locale "zh-CN"
+    Locale "zh-CN"
 
-{-| Traditional Chinese -}
+
+{-| Traditional Chinese
+-}
 zhTW : Locale
 zhTW =
-  Locale "zh-TW"
+    Locale "zh-TW"
 
-{-| French -}
+
+{-| French
+-}
 fr : Locale
 fr =
-  Locale "fr"
+    Locale "fr"
 
-{-| German -}
+
+{-| German
+-}
 de : Locale
 de =
-  Locale "de"
+    Locale "de"
 
-{-| Italian -}
+
+{-| Italian
+-}
 it : Locale
 it =
-  Locale "it"
+    Locale "it"
 
-{-| Japanese -}
+
+{-| Japanese
+-}
 ja : Locale
 ja =
-  Locale "ja"
+    Locale "ja"
 
-{-| Korean -}
+
+{-| Korean
+-}
 ko : Locale
 ko =
-  Locale "ko"
+    Locale "ko"

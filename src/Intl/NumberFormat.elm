@@ -1,15 +1,16 @@
-module Intl.NumberFormat exposing
-  ( NumberFormat
-  , fromLocale
-  , fromOptions
-  , format
-  , Options
-  , Style(PercentStyle, CurrencyStyle, DecimalStyle)
-  , CurrencyDisplay(CurrencyCode, CurrencyName, CurrencySymbol)
-  , defaults
-  , resolvedOptions
-  , supportedLocalesOf
-  )
+module Intl.NumberFormat
+    exposing
+        ( NumberFormat
+        , fromLocale
+        , fromOptions
+        , format
+        , Options
+        , Style(PercentStyle, CurrencyStyle, DecimalStyle)
+        , CurrencyDisplay(CurrencyCode, CurrencyName, CurrencySymbol)
+        , defaults
+        , resolvedOptions
+        , supportedLocalesOf
+        )
 
 {-| A library for formatting numbers in a language sensitve way. This module
 binds to [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat).
@@ -37,7 +38,8 @@ import Maybe exposing (Maybe)
 
 {-| A NumberFormat object, for formatting numbers in a language sensitive way.
 -}
-type NumberFormat = NumberFormat
+type NumberFormat
+    = NumberFormat
 
 
 {-| Create a NumberFormat using rules from the specified language
@@ -47,7 +49,7 @@ type NumberFormat = NumberFormat
 -}
 fromLocale : Locale -> NumberFormat
 fromLocale =
-  Native.Intl.NumberFormat.fromLocale
+    Native.Intl.NumberFormat.fromLocale
 
 
 {-| Create a NumberFormat using rules from the language and other options.
@@ -64,7 +66,7 @@ fromLocale =
 -}
 fromOptions : Options -> NumberFormat
 fromOptions =
-  Native.Intl.NumberFormat.fromOptions
+    Native.Intl.NumberFormat.fromOptions
 
 
 {-| Format a number according to the rules of the NumberFormat.
@@ -73,7 +75,7 @@ fromOptions =
 -}
 format : NumberFormat -> number -> String
 format =
-  Native.Intl.NumberFormat.format
+    Native.Intl.NumberFormat.format
 
 
 {-| An Options record, containing the possible settings for a NumberFormat
@@ -86,33 +88,33 @@ least one property from the second group is not `Nothing`, then the first group
 is ignored.
 -}
 type alias Options =
-  { locale: Locale
-  , style: Style
-  , currency: Currency
-  , currencyDisplay: CurrencyDisplay
-  , useGrouping: Bool
-  , minimumIntegerDigits: Maybe Int
-  , minimumFractionDigits: Maybe Int
-  , maximumFractionDigits: Maybe Int
-  , minimumSignificantDigits: Maybe Int
-  , maximumSignificantDigits: Maybe Int
-  }
+    { locale : Locale
+    , style : Style
+    , currency : Currency
+    , currencyDisplay : CurrencyDisplay
+    , useGrouping : Bool
+    , minimumIntegerDigits : Maybe Int
+    , minimumFractionDigits : Maybe Int
+    , maximumFractionDigits : Maybe Int
+    , minimumSignificantDigits : Maybe Int
+    , maximumSignificantDigits : Maybe Int
+    }
 
 
 {-| Style of the number format.
 -}
 type Style
-  = PercentStyle
-  | CurrencyStyle
-  | DecimalStyle
+    = PercentStyle
+    | CurrencyStyle
+    | DecimalStyle
 
 
 {-| How to display the currency information.
 -}
 type CurrencyDisplay
-  = CurrencyCode
-  | CurrencyName
-  | CurrencySymbol
+    = CurrencyCode
+    | CurrencyName
+    | CurrencySymbol
 
 
 {-| Returns the default options. This is helpful if you only care to change a
@@ -124,17 +126,17 @@ few options.
 -}
 defaults : Options
 defaults =
-  { locale = en
-  , style = DecimalStyle
-  , currency = usd
-  , currencyDisplay = CurrencySymbol
-  , useGrouping = True
-  , minimumIntegerDigits = Nothing
-  , minimumFractionDigits = Nothing
-  , maximumFractionDigits = Nothing
-  , minimumSignificantDigits = Nothing
-  , maximumSignificantDigits = Nothing
-  }
+    { locale = en
+    , style = DecimalStyle
+    , currency = usd
+    , currencyDisplay = CurrencySymbol
+    , useGrouping = True
+    , minimumIntegerDigits = Nothing
+    , minimumFractionDigits = Nothing
+    , maximumFractionDigits = Nothing
+    , minimumSignificantDigits = Nothing
+    , maximumSignificantDigits = Nothing
+    }
 
 
 {-| Returns the locale and formatting options computed when the NumberFormat
@@ -147,7 +149,7 @@ was created.
 -}
 resolvedOptions : NumberFormat -> Options
 resolvedOptions =
-  Native.Intl.NumberFormat.resolvedOptions
+    Native.Intl.NumberFormat.resolvedOptions
 
 
 {-| Returns a list from the provided languages that are supported without having
@@ -164,4 +166,4 @@ to fall back to the runtime's default language.
 -}
 supportedLocalesOf : List Locale -> List Locale
 supportedLocalesOf =
-  Native.Intl.NumberFormat.supportedLocalesOf
+    Native.Intl.NumberFormat.supportedLocalesOf
