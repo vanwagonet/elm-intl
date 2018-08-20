@@ -38,7 +38,7 @@ all =
                     resolved =
                         NumberFormat.resolvedOptions (NumberFormat.fromOptions options)
                   in
-                    describe "percent"
+                    describe "percent maximumSignificantDigits"
                         [ test "format" <|
                             \() -> Expect.equal (format 0.12345) "12.3%"
                         , test "resolvedOptions" <|
@@ -60,7 +60,7 @@ all =
                     resolved =
                         NumberFormat.resolvedOptions (NumberFormat.fromOptions options)
                   in
-                    describe "percent"
+                    describe "percent minimumFractionDigits"
                         [ test "format" <|
                             \() -> Expect.equal (format 1) "100.00%"
                         , test "resolvedOptions" <|
