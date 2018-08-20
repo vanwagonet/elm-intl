@@ -56,7 +56,6 @@ var _thetalecrafter$elm_intl$Native_Intl_DateTimeFormat = function () {
         return 'long'
       case _thetalecrafter$elm_intl$Intl_DateTimeFormat$OmitName:
       default:
-        return
     }
   }
 
@@ -79,7 +78,6 @@ var _thetalecrafter$elm_intl$Native_Intl_DateTimeFormat = function () {
         return '2-digit'
       case _thetalecrafter$elm_intl$Intl_DateTimeFormat$OmitNumber:
       default:
-        return
     }
   }
 
@@ -114,7 +112,6 @@ var _thetalecrafter$elm_intl$Native_Intl_DateTimeFormat = function () {
         return '2-digit'
       case _thetalecrafter$elm_intl$Intl_DateTimeFormat$OmitMonth:
       default:
-        return
     }
   }
 
@@ -137,7 +134,6 @@ var _thetalecrafter$elm_intl$Native_Intl_DateTimeFormat = function () {
         return 'long'
       case _thetalecrafter$elm_intl$Intl_DateTimeFormat$OmitTimeZone:
       default:
-        return
     }
   }
 
