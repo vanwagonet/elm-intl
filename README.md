@@ -71,4 +71,4 @@ All of the Intl objects can be configured with more detailed options using
 [Collator]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.Collator
 [DateTimeFormat]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.DateTimeFormat
 [NumberFormat]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.NumberFormat
-[docs]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest
+[docs]: http://elm-directory.herokuapp.com/package/vanwagonet/elm-intl/
