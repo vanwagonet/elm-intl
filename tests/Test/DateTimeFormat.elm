@@ -35,7 +35,7 @@ all =
                         DateTimeFormat.defaults
 
                     christmas =
-                        -- 2016/12/25, 19:23:45
+                        -- 2016/12/25, 16:23:45 UTC
                         (Date.fromTime (1482683025 * second))
 
                     format dt opts =
@@ -59,9 +59,10 @@ all =
                                     { defaults
                                         | hour12 = Just True
                                         , hour = DateTimeFormat.NumericNumber
+                                        , timeZone = Just utc
                                     }
                                 )
-                                "7 PM"
+                                "4 PM"
                     , test "weekday" <|
                         \() ->
                             Expect.equal
@@ -99,9 +100,10 @@ all =
                                     { defaults
                                         | hour = DateTimeFormat.NumericNumber
                                         , hour12 = Just False
+                                        , timeZone = Just utc
                                     }
                                 )
-                                "19"
+                                "16"
                     , test "minute" <|
                         \() ->
                             Expect.equal
