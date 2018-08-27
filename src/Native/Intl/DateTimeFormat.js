@@ -146,15 +146,15 @@ var _thetalecrafter$elm_intl$Native_Intl_DateTimeFormat = function () {
     var options = {
       timeZone: record.timeZone._0 && record.timeZone._0._0,
       hour12: record.hour12._0,
-      weekday: styleFromName(record.weekday._0),
-      era: styleFromName(record.era._0),
-      year: styleFromNumber(record.year._0),
-      month: styleFromMonth(record.month._0),
-      day: styleFromNumber(record.day._0),
-      hour: styleFromNumber(record.hour._0),
-      minute: styleFromNumber(record.minute._0),
-      second: styleFromNumber(record.second._0),
-      timeZoneName: styleFromTimeZone(record.timeZoneName._0)
+      weekday: styleFromName(record.weekday),
+      era: styleFromName(record.era),
+      year: styleFromNumber(record.year),
+      month: styleFromMonth(record.month),
+      day: styleFromNumber(record.day),
+      hour: styleFromNumber(record.hour),
+      minute: styleFromNumber(record.minute),
+      second: styleFromNumber(record.second),
+      timeZoneName: styleFromTimeZone(record.timeZoneName)
     }
     return new DateTimeFormat(locale, options)
   }
