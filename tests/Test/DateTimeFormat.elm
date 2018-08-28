@@ -28,6 +28,106 @@ all =
                                 "12/25/2016"
                 ]
 
+        formatTests =
+            describe "format"
+                (let
+                    defaults =
+                        DateTimeFormat.defaults
+
+                    christmas =
+                        -- 2016/12/25, 16:23:45 UTC
+                        (Date.fromTime (1482683025 * second))
+
+                    format dt opts =
+                        DateTimeFormat.format (DateTimeFormat.fromOptions opts) dt
+                 in
+                    [ test "timeZone" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas
+                                    { defaults
+                                        | timeZone = Just utc
+                                        , timeZoneName = DateTimeFormat.ShortTimeZone
+                                        , weekday = DateTimeFormat.LongName
+                                    }
+                                )
+                                "Sunday, UTC"
+                    , test "hour12" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas
+                                    { defaults
+                                        | hour12 = Just True
+                                        , hour = DateTimeFormat.NumericNumber
+                                        , timeZone = Just utc
+                                    }
+                                )
+                                "4 PM"
+                    , test "weekday" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas { defaults | weekday = DateTimeFormat.LongName })
+                                "Sunday"
+                    , test "era" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas
+                                    { defaults
+                                        | era = DateTimeFormat.ShortName
+                                        , year = DateTimeFormat.NumericNumber
+                                    }
+                                )
+                                "2016 AD"
+                    , test "year" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas { defaults | year = DateTimeFormat.NumericNumber })
+                                "2016"
+                    , test "month" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas { defaults | month = DateTimeFormat.LongMonth })
+                                "December"
+                    , test "day" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas { defaults | day = DateTimeFormat.NumericNumber })
+                                "25"
+                    , test "hour" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas
+                                    { defaults
+                                        | hour = DateTimeFormat.NumericNumber
+                                        , hour12 = Just False
+                                        , timeZone = Just utc
+                                    }
+                                )
+                                "16"
+                    , test "minute" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas { defaults | minute = DateTimeFormat.NumericNumber })
+                                "23"
+                    , test "second" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas { defaults | second = DateTimeFormat.NumericNumber })
+                                "45"
+                    , test "timeZoneName" <|
+                        \() ->
+                            Expect.equal
+                                (format christmas
+                                    { defaults
+                                        | timeZoneName = DateTimeFormat.LongTimeZone
+                                        , timeZone = Just utc
+                                        , year = DateTimeFormat.NumericNumber
+                                    }
+                                )
+                                "2016, Coordinated Universal Time"
+                    ]
+                )
+
         fromOptionsTests =
             describe "fromOptions and resolvedOptions"
                 (map
@@ -102,6 +202,7 @@ all =
     in
         describe "Intl.DateTimeFormat"
             [ fromLocaleTests
+            , formatTests
             , fromOptionsTests
             , supportedLocalesOfTests
             , defaultsTests
