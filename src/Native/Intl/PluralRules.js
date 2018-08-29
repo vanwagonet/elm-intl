@@ -9,8 +9,21 @@
 
 // eslint-disable-next-line
 var _thetalecrafter$elm_intl$Native_Intl_PluralRules = function () {
-  // this will create an early error if Intl is not supported
   var PluralRules = Intl.PluralRules
+
+  // Minimal dummy implementation to avoid crashes
+  function PluralRulesStub (locales) {
+    this.select = function (value) {
+      return 'other'
+    }
+  }
+  PluralRulesStub.supportedLocalesOf = function (list) {
+    return []
+  }
+
+  if (PluralRules === undefined) {
+    PluralRules = PluralRulesStub
+  }
 
   function fromLocale (locale) {
     return new PluralRules(locale._0)
