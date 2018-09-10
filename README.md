@@ -1,8 +1,4 @@
-# elm-intl [![Build Status](https://travis-ci.org/thetalecrafter/elm-intl.svg)](https://travis-ci.org/thetalecrafter/elm-intl)
-
-```sh
-elm package install thetalecrafter/elm-intl
-```
+# elm-intl [![Build Status](https://travis-ci.org/vanwagonet/elm-intl.svg)](https://travis-ci.org/vanwagonet/elm-intl)
 
 This library contains bindings to the [Intl][Intl] ECMAScript
 Internationalization API. Including `Collator`, `DateTimeFormat`,
@@ -17,7 +13,7 @@ use just the [intl-pluralrules][intl-pluralrules] polyfill.
 
 ## Usage
 
-First get a [Locale][Locale] to use:
+First get a `Locale` to use:
 
 ```elm
 import Intl.Locale exposing (Locale, fromLanguageTag, en)
@@ -29,8 +25,8 @@ appLocale =
   |> withDefault en
 ```
 
-You may then use it to create a [Collator][Collator],
-[DateTimeFormat][DateTimeFormat], or [NumberFormat][NumberFormat]:
+You may then use it to create a `Collator`,
+`DateTimeFormat`, or `NumberFormat`:
 
 ```elm
 import Intl.Collator as Collator
@@ -71,8 +67,4 @@ All of the Intl objects can be configured with more detailed options using
 [Intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
 [polyfill]: https://github.com/andyearnshaw/Intl.js
 [intl-pluralrules]: https://github.com/eemeli/intl-pluralrules/
-[Locale]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.Locale
-[Collator]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.Collator
-[DateTimeFormat]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.DateTimeFormat
-[NumberFormat]: http://package.elm-lang.org/packages/thetalecrafter/elm-intl/latest/Intl.NumberFormat
 [docs]: http://elm-directory.herokuapp.com/package/vanwagonet/elm-intl/
